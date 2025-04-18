@@ -1,0 +1,104 @@
+* {
+	box-sizing: border-box; /* temporary margins. To be remade */
+	margin: 4px;
+	padding: 0px;
+}
+  
+body, html {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+  
+.app-container {
+	flex: 1;
+	display: flex;
+}
+  
+.sidebar {
+	width: 60px;
+	background-color: #555;
+	margin-right: 10px;
+}
+  
+.matrix-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+	grid-template-rows: repeat(4, 1fr);    /* 4 строки */
+	gap: 2px;
+	position: relative;
+	flex: 1;
+	z-index: 1;
+  }
+  
+  .quadrant {
+	border: 1px solid black;
+	overflow: hidden;
+  }
+  .quadrant-title {
+	background: rgba(255, 255, 255, 0.85);
+	padding: 6px 10px;
+	font-weight: bold;
+	font-size: 14px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 6px;
+	margin-bottom: 6px;
+	outline: none;
+	cursor: text;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	white-space: nowrap;        /* ❗️ Не переносить строки */
+	overflow: hidden;           /* ❗️ Скрыть всё, что выходит за границу */
+	text-overflow: ellipsis;    /* ❗️ Добавить троеточие (…) */
+	width: min(90%, 200px);
+	height: 24px;               /* ❗️Задаём фиксированную высоту */
+	line-height: 24px; 
+	
+	display: block;
+	box-sizing: border-box;
+  }
+  .quadrant-title:focus {
+	background: #fffce0;
+	border-color: #f0c000;
+  }
+  
+  .orange  { background-color: #FFA500; } /* оранжевый */
+  .green   { background-color: #008000; } /* зелёный */
+  .red     { background-color: #FF0000; } /* красный */
+  .yellow  { background-color: #FFFF00; } /* жёлтый */
+
+#matrix-canvas {
+	position: absolute;
+	pointer-events: none; /* чтобы не перекрывал мышь */
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	opacity: 0.5;
+}
+
+.task {
+	background: white;
+	color: black;
+	padding: 6px 10px;
+	margin: 4px;
+	border-radius: 4px;
+	font-size: 14px;
+	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+  
+.footer {
+	height: 60px;
+	background-color: #555;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 0 20px;
+}
+  
+input[type="range"] {
+	width: 150px;
+}

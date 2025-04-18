@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eisenhower Matrix</title>
+  <link rel="stylesheet" href="CSS/layout.css">
+  <link rel="stylesheet" href="CSS/matrix.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="sidebar"></div>
+    <div class="matrix-container">
+      <canvas id="matrix-canvas"></canvas>
+    
+      <!-- Категория 1 (оранжевая) -->
+      <div class="quadrant red" data-quadrant="red-1">
+        <div class="quadrant-title" contenteditable="true" data-title-id="red-1">Введите название</div>
+      </div>
+      <div class="quadrant red" data-quadrant="red-2">
+      </div>
+      <div class="quadrant yellow" data-quadrant="yellow-1"></div>
+      <div class="quadrant yellow" data-quadrant="yellow-2"></div>
+
+      <!-- Категория 2 (зелёная) -->
+      <div class="quadrant red" data-quadrant="red-3"></div>
+      <div class="quadrant red" data-quadrant="red-4"></div>
+      <div class="quadrant yellow" data-quadrant="yellow-3"></div>
+      <div class="quadrant yellow" data-quadrant="yellow-4"></div>
+
+      <!-- Категория 3 (красная) -->
+      <div class="quadrant orange" data-quadrant="orange-1"></div>
+      <div class="quadrant orange" data-quadrant="orange-2"></div>
+      <div class="quadrant green" data-quadrant="green-1"></div>
+      <div class="quadrant green" data-quadrant="green-2"></div>
+    
+      <!-- Категория 4 (жёлтая) -->
+      <div class="quadrant orange" data-quadrant="orange-3"></div>
+      <div class="quadrant orange" data-quadrant="orange-4"></div>
+      <div class="quadrant green" data-quadrant="green-3"></div>
+      <div class="quadrant green" data-quadrant="green-4"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <input type="range">
+    <input type="range">
+  </div>
+
+  <script type="module" src="scripts/matrix-script.js"></script>
+
+</body>
+</html>

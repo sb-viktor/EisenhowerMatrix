@@ -1,0 +1,46 @@
+.quadrant {
+	border: 3px solid rgb(255, 0, 0);
+	overflow: hidden;
+	border-radius: 10px;
+  }
+  
+  .quadrant-title {
+	background: rgba(255, 255, 255, 0.85);
+	padding: 6px 10px;
+	font-weight: bold;
+	font-size: 14px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 6px;
+	margin-bottom: 6px;
+	outline: none;
+	cursor: text;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: min(90%, 200px);
+	height: 24px;
+	line-height: 24px;
+	display: block;
+	box-sizing: border-box;
+  }
+  
+  .quadrant-title:focus {
+	background: #fffce0;
+	border-color: #f0c000;
+  }
+  
+  .orange  { background-color: #FFA500; }
+  .green   { background-color: #008000; }
+  .red     { background-color: rgba(235, 32, 75, 0.8);}
+  .yellow  { background-color: #FFFF00; }
+  
+  .task {
+	background: white;
+	color: black;
+	padding: 6px 10px;
+	margin: 4px;
+	border-radius: 4px;
+	font-size: 14px;
+	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  }
