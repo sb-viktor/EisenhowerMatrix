@@ -27,14 +27,15 @@ export class TodoController {
       title: string
       items: string[]
       date: Date
+      categoryId: number
     }
   ): Promise<Todo> {
-    const { title, items, date } = body
+    const { title, items, date, categoryId } = body
 
     const token = req.headers.authorization.split(" ")[1]
 
     const idOfUser = this.authService.getUserIdFromToken(token)
 
-    return this.todoService.createOne(title, items, date, idOfUser)
+    return this.todoService.createOne(title, items, date, idOfUser, categoryId)
   }
 }

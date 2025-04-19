@@ -22,13 +22,15 @@ export class TodoService {
     title: string,
     items: string[],
     date: Date,
-    userId: number
+    userId: number,
+    categoryId: number
   ): Promise<Todo> {
     const result = await this.todoModel.create({
       title,
       items,
       date,
       userId,
+      categoryId,
     })
 
     return result

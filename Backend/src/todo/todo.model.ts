@@ -12,6 +12,7 @@ import {
   InferCreationAttributes,
 } from "sequelize"
 import { User } from "../user/user.model"
+import { Category } from "src/category/category.model"
 
 @Table({ tableName: "todos" })
 export class Todo extends Model<
@@ -30,6 +31,10 @@ export class Todo extends Model<
   @ForeignKey(() => User)
   @Column
   declare userId: number
+
+  @ForeignKey(() => Category)
+  @Column({ type: DataType.INTEGER })
+  declare categoryId: CreationOptional<number>
 
   @BelongsTo(() => User)
   declare user: CreationOptional<User>

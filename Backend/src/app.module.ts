@@ -11,6 +11,7 @@ import { JwtModule } from "@nestjs/jwt"
 import { UserController } from "./user/user.controller"
 import { UserService } from "./user/user.service"
 import { AuthService } from "./auth/auth.service"
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AuthService } from "./auth/auth.service"
     }),
     TodoModule,
     UserModule,
+    CategoryModule,
   ],
   controllers: [AppController, UserController],
   providers: [AppService, UserService, AuthService],
