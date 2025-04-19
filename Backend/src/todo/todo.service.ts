@@ -14,8 +14,8 @@ export class TodoService {
     private userModel: typeof User
   ) {}
 
-  async findAll(): Promise<Todo[]> {
-    return this.todoModel.findAll()
+  async findAll({ idOfUser }: { idOfUser: number }): Promise<Todo[] | null> {
+    return this.todoModel.findAll({ where: { userId: idOfUser } })
   }
 
   async createOne(

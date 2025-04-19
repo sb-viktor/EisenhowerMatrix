@@ -11,8 +11,12 @@ export class TodoController {
   ) {}
 
   @Get()
-  getAllTodos(): Promise<Todo[]> {
-    return this.todoService.findAll()
+  getAllTodos(@Req() req): Promise<Todo[] | null> {
+    const token = req.headers.authorization.split(" ")[1]
+
+    const idOfUser = this.authService.getUserIdFromToken(token)
+
+    return this.todoService.findAll({ idOfUser })
   }
 
   @Post("/create")
