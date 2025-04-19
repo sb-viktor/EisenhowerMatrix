@@ -8,9 +8,9 @@ import { User } from "./user/user.model"
 import { Todo } from "./todo/todo.model"
 import { JwtMiddleware } from "./auth/jwt.middleware"
 import { JwtModule } from "@nestjs/jwt"
+import { UserController } from "./user/user.controller"
+import { UserService } from "./user/user.service"
 import { AuthService } from "./auth/auth.service"
-import { AuthController } from "./auth/auth.controller"
-console.log("process.env", process.env.DB_USER)
 
 @Module({
   imports: [
@@ -27,20 +27,23 @@ console.log("process.env", process.env.DB_USER)
     }),
     SequelizeModule.forFeature([User]),
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
+      secret: process.env.JWT_SECRET || "moneyforme",
+      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN || "3600s" },
     }),
     TodoModule,
     UserModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  controllers: [AppController, UserController],
+  providers: [AppService, UserService, AuthService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(JwtMiddleware)
-      .exclude({ path: "users/login", method: RequestMethod.POST })
+      .exclude(
+        { path: "users/login", method: RequestMethod.POST },
+        { path: "users", method: RequestMethod.POST }
+      )
       .forRoutes("*")
   }
 }

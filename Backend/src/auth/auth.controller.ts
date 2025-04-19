@@ -1,14 +1,14 @@
 // auth/auth.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { Controller, Post, Body } from "@nestjs/common"
+import { AuthService } from "./auth.service"
 
-@Controller('users')
+@Controller("users")
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('login')
+  @Post("login")
   async login(@Body() body: { login: string; password: string }) {
-    const token = await this.authService.validateUser(body.login, body.password);
-    return { access_token: token };
+    const token = await this.authService.validateUser(body.login, body.password)
+    return { access_token: token }
   }
 }

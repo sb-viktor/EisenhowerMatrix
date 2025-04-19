@@ -1,29 +1,36 @@
-// todo.model.ts
 import {
   Table,
   Column,
   Model,
+  DataType,
   ForeignKey,
   BelongsTo,
-  DataType,
 } from "sequelize-typescript"
+import {
+  CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+} from "sequelize"
 import { User } from "../user/user.model"
 
 @Table({ tableName: "todos" })
-export class Todo extends Model<Todo> {
+export class Todo extends Model<
+  InferAttributes<Todo>,
+  InferCreationAttributes<Todo>
+> {
   @Column
-  title: string
+  declare title: string
 
   @Column({ type: DataType.ARRAY(DataType.STRING) })
-  items: string[]
+  declare items: string[]
 
   @Column({ type: DataType.DATE })
-  date: Date
+  declare date: Date
 
   @ForeignKey(() => User)
   @Column
-  userId: number
+  declare userId: number
 
   @BelongsTo(() => User)
-  user: User
+  declare user: CreationOptional<User>
 }
